@@ -1,3 +1,7 @@
+# All entries are unique
+# Call the same function recursively for nums[0:i]+nums[i+1:]
+# Combine nums[i] with the result
+
 def permute(nums):
     """
     :type nums: List[int]
@@ -11,7 +15,7 @@ def permute(nums):
     ans = []
     for i in range(len(nums)):
         temp = nums[0:i]+nums[i+1:]
-        sub_list = self.permute(temp)
+        sub_list = permute(temp)
         for entry in sub_list:
             ans.append([nums[i]]+entry)
     return ans
