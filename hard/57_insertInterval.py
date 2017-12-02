@@ -1,4 +1,5 @@
 # Insert interval in a list of interval
+# All the intervals are initially sorted according to start 
 # Find the position at which to insert
 # Insert and call mergeintervals with imsertion_index-1
 # Time: O(n)
