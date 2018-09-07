@@ -14,18 +14,24 @@ struct TreeNode {
 class Solution {
  public:
     // Using one stack
+    /*
+     * Approach 2: Space optimization
+     * - if root, get the left most node w.r.t that root by pushing right and root into s and setting root to left
+     * - when !root, pop if it has right child and its right child is same as top of stack
+     * -- pop right, push root and set root to right
+     */
     vector<int> postorderTraversal(TreeNode* root)
     {
         vector<int> output;
         stack<TreeNode*> s;
-        if (root)
-        {
-            if (root->right)
-                s.push(root->right);
-            s.push(root);
-            root = root->left;
-        }
-        while (!s.empty())
+        // if (root)
+        // {
+        //     if (root->right)
+        //         s.push(root->right);
+        //     s.push(root);
+        //     root = root->left;
+        // }
+        do
         {
             if (root)
             {
@@ -51,12 +57,19 @@ class Solution {
                     root = nullptr;
                 }
             }
-        }
+        } while (!s.empty());
         return output;
     }
     
     
     // Using two stacks
+    /*
+     * Approach 1: 
+     *  - push root to s1
+     *  - while s1 is not empty:
+     *  -- curr = pop, push cur->left and cur->right to s1, push curr to s2
+     *  - print s2
+     */
     /*
     vector<int> postorderTraversal(TreeNode* root) {
         vector<int> output;
